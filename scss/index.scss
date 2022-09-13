@@ -1,0 +1,15 @@
+@import 'reset';
+@import 'colors';
+@import 'forms';
+@import 'buttons';
+@import 'login';
+
+body {
+    background-color: #F5F5F5;
+}
+
+.anka {
+    color: $primary-color;
+    font-weight: 40px;
+    font-size: 40px;
+}
