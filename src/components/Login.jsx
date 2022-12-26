@@ -1,13 +1,12 @@
-const { useRef, useState } = require("react");
+import { ACTIONS } from "../context/actions";
+import { useAuth } from "../context/context";
+
+const { useRef } = require("react");
 
 function Login() {
-  const [state, setState] = useState({
-    response_code: "",
-    response_message: "",
-  });
+  const { dispatch } = useAuth();
   const usernameRef = useRef();
   const passwordRef = useRef();
-
   async function handleSubmit(e) {
     e.preventDefault();
     try {
@@ -22,14 +21,12 @@ function Login() {
         }),
       });
       const data = await res.json();
-      setState((prevSate) => {
-        return {
-          ...prevSate,
-          response_code: data.response_code,
-          response_message: data.response_message,
-        };
-      });
-      console.log(data);
+      if (parseInt(data.response_code) === 0) {
+        dispatch({
+          type: ACTIONS.LOGIN,
+          isAuthenticated: true,
+        });
+      }
     } catch (e) {
       console.log(e);
     }
