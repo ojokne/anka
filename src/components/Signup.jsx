@@ -1,11 +1,6 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 function Signup() {
-  const [state, setState] = useState({
-    response_code: "",
-    response_message: "",
-  });
-
   const usernameRef = useRef();
   const passwordRef = useRef();
 
@@ -23,14 +18,6 @@ function Signup() {
         }),
       });
       const data = await res.json();
-      setState((prevSate) => {
-        return {
-          ...prevSate,
-          response_code: data.response_code,
-          response_message: data.response_message,
-        };
-      });
-      console.log(data);
     } catch (e) {
       console.log(e);
     }
@@ -38,7 +25,6 @@ function Signup() {
   return (
     <div>
       <h1>Give us your details</h1>
-      {JSON.stringify(state)}
       <form>
         <div>
           <label htmlFor="username">Username</label>
