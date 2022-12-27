@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 
 function Signup() {
   const usernameRef = useRef();
@@ -38,9 +39,11 @@ function Signup() {
         <div>
           <button onClick={(e) => handleSubmit(e)}>Signup</button>
         </div>
+        <p>
+          <Link to="/login">Login</Link>
+        </p>
       </form>
     </div>
   );
 }
-
 export default Signup;

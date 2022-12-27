@@ -1,3 +1,4 @@
+import { Link, useNavigate } from "react-router-dom";
 import { ACTIONS } from "../context/actions";
 import { useAuth } from "../context/context";
 
@@ -7,6 +8,7 @@ function Login() {
   const { dispatch } = useAuth();
   const usernameRef = useRef();
   const passwordRef = useRef();
+  const navigate = useNavigate();
   async function handleSubmit(e) {
     e.preventDefault();
     try {
@@ -26,6 +28,7 @@ function Login() {
           type: ACTIONS.LOGIN,
           isAuthenticated: true,
         });
+        navigate("/dashboard");
       }
     } catch (e) {
       console.log(e);
@@ -47,6 +50,9 @@ function Login() {
         <div>
           <button onClick={(e) => handleSubmit(e)}>Login</button>
         </div>
+        <p>
+          <Link to="/signup">Signup</Link>
+        </p>
       </form>
     </div>
   );

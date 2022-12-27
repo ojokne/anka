@@ -1,11 +1,18 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import Dashboard from "./components/Dashboard";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello</h1>
+      <Routes>
+        {/* <Route path="/" exact element={ } /> */}
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
     </div>
   );
 }
