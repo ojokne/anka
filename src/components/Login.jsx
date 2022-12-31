@@ -9,6 +9,14 @@ function Login() {
   const usernameRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
+
+  function handeleShowPassword() {
+    if (passwordRef.current.type === "password") {
+      passwordRef.current.type = "text";
+    } else {
+      passwordRef.current.type = "password";
+    }
+  }
   async function handleSubmit(e) {
     e.preventDefault();
     try {
@@ -46,6 +54,14 @@ function Login() {
           <label htmlFor="password">Password</label>
 
           <input type="password" ref={passwordRef} id="password" />
+          <br />
+
+          <input
+            type="checkbox"
+            id="showPassword"
+            onChange={() => handeleShowPassword()}
+          />
+          <label htmlFor="showPassword">show password</label>
         </div>
         <div>
           <button onClick={(e) => handleSubmit(e)}>Login</button>
